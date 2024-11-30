@@ -1,15 +1,18 @@
 #include "_dlst_.h"
 
-void _dlst_foreach(t_dlst *dlst, void (*f)(void *))
+t_dlst  *_dlst_foreach(t_dlst *dlst, void (*f)(void *))
 {
     t_dlst_node *tmp;
 
-    if (!dlst || !f)
-        return ;
+    if (!dlst)
+        return (NULL);
+    if (!f)
+        return (dlst);
     tmp = dlst->top;
     while (tmp)
     {
         f(tmp->ptr);
         tmp = tmp->next;
     }
+    return (dlst);
 }

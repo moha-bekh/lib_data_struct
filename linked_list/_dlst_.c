@@ -45,6 +45,15 @@ void *_clear_token(t_token *token)
     return (NULL);
 }
 
+void _free_value(t_token *token)
+{
+    if (!token)
+        return ;
+    free(token->value);
+    token->value = NULL;
+    return ;
+}
+
 int main(void)
 {
     t_dlst *dlst = NULL;
@@ -59,10 +68,12 @@ int main(void)
     dlst = _dlst_insert_prev(dlst, dlst->bot, _set_token("&&", '&', false));
     dlst = _dlst_insert_prev(dlst, dlst->bot, _set_token("ls", 'S', false));
 
-    _dlst_foreach(dlst, (void *)_print_token);
-    dlst = _dlst_del(dlst, dlst->top->next, (void *)_clear_token);
-    printf("\n\n");
-    _dlst_foreach(dlst, (void *)_print_token);
+    dlst = _dlst_foreach(dlst, (void *)_print_token);
+    dlst = _dlst_foreach(dlst, (void *)_free_value);
+    dlst = _dlst_foreach(dlst, (void *)_print_token);
+    /*dlst = _dlst_del(dlst, dlst->top->next, (void *)_clear_token);*/
+    /*printf("\n\n");*/
+    /*_dlst_foreach(dlst, (void *)_print_token);*/
 
     dlst = _dlst_clear(dlst, (void *)_clear_token);
 
