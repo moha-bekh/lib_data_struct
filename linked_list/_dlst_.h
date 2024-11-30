@@ -17,11 +17,11 @@ t_dlst *_dlst_insert_prev(t_dlst *, t_dlst_node *, void *);
 
 t_dlst *_dlst_pop_front(t_dlst *, void* (*f)(void *));
 t_dlst *_dlst_pop_back(t_dlst *, void* (*f)(void *));
-t_dlst *_dlst_del(t_dlst *, t_dlst_node *, void* (*f)(void *));
 
+t_dlst *_dlst_del(t_dlst *, t_dlst_node *, void* (*f)(void *));
 t_dlst *_dlst_clear(t_dlst *, void* (*f)(void *));
 
-void _dlst_print(t_dlst *, void (*f)(void *));
+void _dlst_foreach(t_dlst *, void (*f)(void *));
 
 struct s_dlst_node {
     t_dlst_node *next;

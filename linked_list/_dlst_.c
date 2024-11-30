@@ -59,10 +59,10 @@ int main(void)
     dlst = _dlst_insert_prev(dlst, dlst->bot, _set_token("&&", '&', false));
     dlst = _dlst_insert_prev(dlst, dlst->bot, _set_token("ls", 'S', false));
 
-    _dlst_print(dlst, (void *)_print_token);
+    _dlst_foreach(dlst, (void *)_print_token);
     dlst = _dlst_del(dlst, dlst->top->next, (void *)_clear_token);
     printf("\n\n");
-    _dlst_print(dlst, (void *)_print_token);
+    _dlst_foreach(dlst, (void *)_print_token);
 
     dlst = _dlst_clear(dlst, (void *)_clear_token);
 

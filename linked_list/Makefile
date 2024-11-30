@@ -10,7 +10,7 @@ SRC		:=	_dlst_.c\
 			_dlst_insert_prev.c\
 			_dlst_pop_front.c\
 			_dlst_pop_back.c\
-			_dlst_print.c\
+			_dlst_foreach.c\
 			_dlst_push_back.c\
 			_dlst_push_front.c\
 

@@ -1,6 +1,6 @@
 #include "_dlst_.h"
 
-void _dlst_print(t_dlst *dlst, void (*f)(void *))
+void _dlst_foreach(t_dlst *dlst, void (*f)(void *))
 {
     t_dlst_node *tmp;
 
