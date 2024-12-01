@@ -1,33 +1,45 @@
+NAME	=	lib_dlst_.a
+
 CC		=	cc
-FLAGS	=	-Wall -Wextra -Werror -g3
+INC		=	-I inc
+ERR_FLG	=	-Wall -Wextra -Werror -g3
+DEP_FLG	=	-MMD -MP
+AR		=	ar -crs
 
-SRC		:=	_dlst_.c\
-			_dlst_clear.c\
-			_dlst_del.c\
-			_dlst_foreach.c\
-			_dlst_insert_next.c\
-			_dlst_insert_prev.c\
-			_dlst_new.c\
-			_dlst_new_node.c\
-			_dlst_pop_back.c\
-			_dlst_pop_front.c\
-			_dlst_push_back.c\
-			_dlst_push_front.c\
+SRC_DIR	:=	src/
+OBJ_DIR	:=	obj/
 
-OBJ		:=	$(SRC:.c=.o)
+SRC_FLS	:=	\
+			_dlst_clear\
+			_dlst_del\
+			_dlst_foreach\
+			_dlst_insert_next\
+			_dlst_insert_prev\
+			_dlst_new\
+			_dlst_new_node\
+			_dlst_pop_back\
+			_dlst_pop_front\
+			_dlst_push_back\
+			_dlst_push_front\
 
-NAME	=	dlst
+SRC		:=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FLS)))
+OBJ		:=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FLS)))
+DEP		:=	$(patsubst %.o, %.d, $(OBJ))
 
-all		: $(NAME)
+
+all		:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+			$(AR) $@ $^
 
-%.o		:	%.c
-	$(CC) $(FLAGS) -c $< -o $@
+$(OBJ_DIR)%.o	:	$(SRC_DIR)%.c | obj_dir
+			$(CC) $(ERR_FLG) $(INC) $(DEP_FLG) -c $< -o $@
+
+obj_dir	:
+			mkdir -p $(OBJ_DIR)
 
 clean	:
-			rm -f $(OBJ)
+			rm -rf $(OBJ_DIR)
 
 fclean	: 	clean
 			rm -f $(NAME)
@@ -35,3 +47,5 @@ fclean	: 	clean
 re		:	fclean all
 
 .PHONY	:	all clean fclean re
+
+-include $(DEP)

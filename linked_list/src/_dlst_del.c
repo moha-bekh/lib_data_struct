@@ -1,4 +1,5 @@
 #include "_dlst_.h"
+#include "stdio.h"
 
 t_dlst  *_dlst_del(t_dlst *dlst, t_dlst_node *node, void* (*f)(void *))
 {
