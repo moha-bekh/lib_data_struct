@@ -14,6 +14,8 @@ t_dlst  *_dlst_pop_front(t_dlst *dlst, void* (*f)(void *))
     }
     if (f)
         tmp->ptr = f(tmp->ptr);
+    else
+        free(tmp->ptr);
     free(tmp);
     if (!dlst->len)
     {

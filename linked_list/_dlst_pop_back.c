@@ -14,7 +14,7 @@ t_dlst  *_dlst_pop_back(t_dlst *dlst, void* (*f)(void *))
     }
     if (f)
         tmp->ptr = f(tmp->ptr);
-    else if (tmp->ptr)
+    else
         free(tmp->ptr);
     free(tmp);
     if (!dlst->len)
