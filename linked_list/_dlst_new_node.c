@@ -1,6 +1,6 @@
 #include "_dlst_.h"
 
-t_dlst_node	*_dlst_new_node(void)
+t_dlst_node *_dlst_new_node(void)
 {
 	t_dlst_node	*node;
 

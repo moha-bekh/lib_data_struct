@@ -4,13 +4,13 @@ FLAGS	=	-Wall -Wextra -Werror -g3
 SRC		:=	_dlst_.c\
 			_dlst_clear.c\
 			_dlst_del.c\
-			_dlst_new_node.c\
-			_dlst_new.c\
+			_dlst_foreach.c\
 			_dlst_insert_next.c\
 			_dlst_insert_prev.c\
-			_dlst_pop_front.c\
+			_dlst_new.c\
+			_dlst_new_node.c\
 			_dlst_pop_back.c\
-			_dlst_foreach.c\
+			_dlst_pop_front.c\
 			_dlst_push_back.c\
 			_dlst_push_front.c\
 

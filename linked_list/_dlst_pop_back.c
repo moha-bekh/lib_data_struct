@@ -1,6 +1,6 @@
 #include "_dlst_.h"
 
-t_dlst *_dlst_pop_back(t_dlst *dlst, void* (*f)(void *))
+t_dlst  *_dlst_pop_back(t_dlst *dlst, void* (*f)(void *))
 {
     t_dlst_node *tmp;
 

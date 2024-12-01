@@ -1,6 +1,6 @@
 #include "_dlst_.h"
 
-t_dlst	*_dlst_new(void)
+t_dlst  *_dlst_new(void)
 {
 	t_dlst	*dlst;
 
