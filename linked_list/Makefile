@@ -1,4 +1,4 @@
-NAME	=	lib_dlst_.a
+NAME	=	libdlst.a
 
 CC		=	cc
 INC		=	-I inc
@@ -10,17 +10,18 @@ SRC_DIR	:=	src/
 OBJ_DIR	:=	obj/
 
 SRC_FLS	:=	\
-			_dlst_clear\
-			_dlst_del\
-			_dlst_foreach\
-			_dlst_insert_next\
-			_dlst_insert_prev\
-			_dlst_new\
-			_dlst_new_node\
-			_dlst_pop_back\
-			_dlst_pop_front\
-			_dlst_push_back\
-			_dlst_push_front\
+			dlst_clear\
+			dlst_del\
+			dlst_foreach\
+			dlst_getters\
+			dlst_insert_next\
+			dlst_insert_prev\
+			dlst_new\
+			dlst_node_new\
+			dlst_pop_back\
+			dlst_pop_front\
+			dlst_push_back\
+			dlst_push_front\
 
 SRC		:=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FLS)))
 OBJ		:=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FLS)))
@@ -46,6 +47,9 @@ fclean	: 	clean
 
 re		:	fclean all
 
-.PHONY	:	all clean fclean re
+test	:	all
+			$(MAKE) -C tests run
+
+.PHONY	:	all clean fclean re test
 
 -include $(DEP)
